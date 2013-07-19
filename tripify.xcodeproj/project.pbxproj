@@ -33,6 +33,7 @@
 		D07B2E071799C0150042CE86 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B2DFD1799C0150042CE86 /* AFXMLRequestOperation.m */; };
 		D07B2E081799C0150042CE86 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B2DFF1799C0150042CE86 /* UIImageView+AFNetworking.m */; };
 		D07B2E0B1799C0FD0042CE86 /* tripify.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B2E0A1799C0FD0042CE86 /* tripify.m */; };
+		D07B2E121799E77C0042CE86 /* dealsJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B2E111799E77C0042CE86 /* dealsJSON.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,8 @@
 		D07B2DFF1799C0150042CE86 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		D07B2E091799C0FD0042CE86 /* tripify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tripify.h; sourceTree = "<group>"; };
 		D07B2E0A1799C0FD0042CE86 /* tripify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tripify.m; sourceTree = "<group>"; };
+		D07B2E101799E77C0042CE86 /* dealsJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dealsJSON.h; sourceTree = "<group>"; };
+		D07B2E111799E77C0042CE86 /* dealsJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dealsJSON.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +224,7 @@
 		D07B2DE41799B8CF0042CE86 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				D07B2E0F1799E77C0042CE86 /* deals */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -266,6 +270,15 @@
 				D07B2DFF1799C0150042CE86 /* UIImageView+AFNetworking.m */,
 			);
 			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		D07B2E0F1799E77C0042CE86 /* deals */ = {
+			isa = PBXGroup;
+			children = (
+				D07B2E101799E77C0042CE86 /* dealsJSON.h */,
+				D07B2E111799E77C0042CE86 /* dealsJSON.m */,
+			);
+			path = deals;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,6 +405,7 @@
 				D07B2E071799C0150042CE86 /* AFXMLRequestOperation.m in Sources */,
 				D07B2E081799C0150042CE86 /* UIImageView+AFNetworking.m in Sources */,
 				D07B2E0B1799C0FD0042CE86 /* tripify.m in Sources */,
+				D07B2E121799E77C0042CE86 /* dealsJSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +578,7 @@
 				D07B2DDD1799B88B0042CE86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D07B2DDE1799B88B0042CE86 /* Build configuration list for PBXNativeTarget "tripifyTests" */ = {
 			isa = XCConfigurationList;
@@ -572,6 +587,7 @@
 				D07B2DE01799B88B0042CE86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
