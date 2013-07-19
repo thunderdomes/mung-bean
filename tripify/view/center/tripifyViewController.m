@@ -7,7 +7,7 @@
 //
 
 #import "tripifyViewController.h"
-
+#import "tripifyCell.h"
 @interface tripifyViewController ()
 
 @end
@@ -19,7 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-		self.view.backgroundColor=[UIColor whiteColor];
+		self.view.backgroundColor=[UIColor colorWithRed:0.953 green:0.953 blue:0.953 alpha:1];
 		deals_array=[[NSMutableArray alloc]init];
 		deals_table=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,  self.view.frame.size.height-44)];
 		deals_table.delegate=self;
@@ -122,7 +122,7 @@
     return 1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-	return  90;
+	return  125;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -131,11 +131,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	dealsJSON  *object_draw=[deals_array objectAtIndex:indexPath.row];
-    static NSString *CellIdentifier = @"CountryCell";
+    static NSString *CellIdentifier = @"deals";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    tripifyCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[tripifyCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
  	
 	cell.textLabel.text=object_draw.headline;
