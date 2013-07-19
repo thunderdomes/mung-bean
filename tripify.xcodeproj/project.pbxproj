@@ -34,6 +34,9 @@
 		D07B2E081799C0150042CE86 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B2DFF1799C0150042CE86 /* UIImageView+AFNetworking.m */; };
 		D07B2E0B1799C0FD0042CE86 /* tripify.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B2E0A1799C0FD0042CE86 /* tripify.m */; };
 		D07B2E121799E77C0042CE86 /* dealsJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B2E111799E77C0042CE86 /* dealsJSON.m */; };
+		D07B2E141799F10A0042CE86 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07B2E131799F10A0042CE86 /* MobileCoreServices.framework */; };
+		D07B2E161799F11D0042CE86 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07B2E151799F11D0042CE86 /* SystemConfiguration.framework */; };
+		D07B2E181799F15D0042CE86 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D07B2E171799F15D0042CE86 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +95,9 @@
 		D07B2E0A1799C0FD0042CE86 /* tripify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tripify.m; sourceTree = "<group>"; };
 		D07B2E101799E77C0042CE86 /* dealsJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dealsJSON.h; sourceTree = "<group>"; };
 		D07B2E111799E77C0042CE86 /* dealsJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dealsJSON.m; sourceTree = "<group>"; };
+		D07B2E131799F10A0042CE86 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		D07B2E151799F11D0042CE86 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D07B2E171799F15D0042CE86 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07B2E161799F11D0042CE86 /* SystemConfiguration.framework in Frameworks */,
+				D07B2E141799F10A0042CE86 /* MobileCoreServices.framework in Frameworks */,
 				D07B2DAD1799B88B0042CE86 /* UIKit.framework in Frameworks */,
 				D07B2DAF1799B88B0042CE86 /* Foundation.framework in Frameworks */,
 				D07B2DB11799B88B0042CE86 /* CoreGraphics.framework in Frameworks */,
@@ -121,6 +129,9 @@
 		D07B2DA01799B88B0042CE86 = {
 			isa = PBXGroup;
 			children = (
+				D07B2E171799F15D0042CE86 /* .gitignore */,
+				D07B2E151799F11D0042CE86 /* SystemConfiguration.framework */,
+				D07B2E131799F10A0042CE86 /* MobileCoreServices.framework */,
 				D07B2DB21799B88B0042CE86 /* tripify */,
 				D07B2DD01799B88B0042CE86 /* tripifyTests */,
 				D07B2DAB1799B88B0042CE86 /* Frameworks */,
@@ -358,6 +369,7 @@
 				D07B2DC11799B88B0042CE86 /* Default@2x.png in Resources */,
 				D07B2DC31799B88B0042CE86 /* Default-568h@2x.png in Resources */,
 				D07B2DEB1799BC520042CE86 /* navbar@2x.png in Resources */,
+				D07B2E181799F15D0042CE86 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
