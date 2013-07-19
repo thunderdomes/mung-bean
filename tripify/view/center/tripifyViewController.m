@@ -20,6 +20,13 @@
     if (self) {
         // Custom initialization
 		self.view.backgroundColor=[UIColor whiteColor];
+		deals_array=[[NSMutableArray alloc]init];
+		deals_table=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,  self.view.frame.size.height-44)];
+		deals_table.delegate=self;
+		deals_table.dataSource=self;
+		
+		[self.view addSubview:deals_table];
+		
     }
     return self;
 }
@@ -32,17 +39,32 @@
 -(void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:YES];
 	[self initNavbar];
-	[self fethData];
+	[self fetchData];
 	
 	
 }
--(void)fethData{
-	NSURL *url = [NSURL URLWithString:@"https://alpha-api.app.net/stream/0/posts/stream/global"];
-	NSURLRequest *request = [NSURLRequest requestWithURL:url];
-	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-		NSLog(@"App.net Global Stream: %@", JSON);
-	} failure:nil];
-	[operation start];
+-(void)fetchData{
+	NSString *url=[NSString stringWithFormat:@"%@&api_key=%@",deal_url,api_key];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:url]];
+	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"get"
+															path:nil
+													  parameters:nil];
+	[AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
+	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id responseObject) {
+		for(id deals_object in [responseObject objectForKey:@"deals"]){
+			dealsJSON *object=[[dealsJSON alloc] initWithDictionary:deals_object];
+			[deals_array addObject:object];
+		}
+		[deals_table reloadData];
+    }failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+		NSLog(@"error %@",error);
+    }];
+    
+	// self.filteredArray = [NSMutableArray arrayWithCapacity:netrax.count];
+	
+    [operation start];
+	
 }
 -(void)initNavbar{
 	[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar"] forBarMetrics:UIBarMetricsDefault];
@@ -94,6 +116,37 @@
 	[self.navigationController.navigationBar addSubview:top_label];
 
 
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+	return  90;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return deals_array.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	dealsJSON  *object_draw=[deals_array objectAtIndex:indexPath.row];
+    static NSString *CellIdentifier = @"CountryCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+ 	
+	cell.textLabel.text=object_draw.headline;
+	cell.detailTextLabel.text=object_draw.deal_type;
+
+	
+	cell.detailTextLabel.backgroundColor=[UIColor clearColor];
+	cell.selectionStyle=UITableViewCellEditingStyleNone;
+	
+	
+    return cell;
 }
 - (void)didReceiveMemoryWarning
 {

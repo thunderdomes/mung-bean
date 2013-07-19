@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface tripifyViewController : UIViewController
-
+@interface tripifyViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+{
+	NSMutableArray *deals_array;
+	UITableView *deals_table;
+}
 @end
