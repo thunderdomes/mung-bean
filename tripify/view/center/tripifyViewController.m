@@ -32,7 +32,17 @@
 -(void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:YES];
 	[self initNavbar];
+	[self fethData];
 	
+	
+}
+-(void)fethData{
+	NSURL *url = [NSURL URLWithString:@"https://alpha-api.app.net/stream/0/posts/stream/global"];
+	NSURLRequest *request = [NSURLRequest requestWithURL:url];
+	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+		NSLog(@"App.net Global Stream: %@", JSON);
+	} failure:nil];
+	[operation start];
 }
 -(void)initNavbar{
 	[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar"] forBarMetrics:UIBarMetricsDefault];
