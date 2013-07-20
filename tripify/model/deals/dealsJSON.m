@@ -20,7 +20,7 @@
 		self.url=[dictionary objectForKey:@"url"];
 		self.price_currency=[[dictionary objectForKey:@"price"]objectForKey:@"currency"];
 		self.price_amount=[[dictionary objectForKey:@"price"]objectForKey:@"amount"];
-		self.price_amount=[[dictionary objectForKey:@"price"]objectForKey:@"formatted"];
+		self.price_formatted=[[dictionary objectForKey:@"price"]objectForKey:@"formatted"];
 		self.image_original=[[dictionary objectForKey:@"image"]objectForKey:@"original"];
 		self.image_thumb=[[dictionary objectForKey:@"image"]objectForKey:@"thumbnail"];
 		self.location=[dictionary objectForKey:@"location"];
