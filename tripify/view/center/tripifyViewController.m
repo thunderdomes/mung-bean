@@ -8,6 +8,7 @@
 
 #import "tripifyViewController.h"
 #import "tripifyCell.h"
+
 @interface tripifyViewController ()
 
 @end
@@ -26,6 +27,7 @@
 		deals_table.dataSource=self;
 		deals_table.separatorColor=[UIColor clearColor];
 		
+
 		[self.view addSubview:deals_table];
 		
     }
@@ -54,7 +56,7 @@
 	}
 }
 -(void)fetchData{
-	NSString *url=[NSString stringWithFormat:@"%@&api_key=%@&page=%d&per_page=10",deal_url,api_key,current_page];
+	NSString *url=[NSString stringWithFormat:@"%@&api_key=%@&page=%d&per_page=10&currency=IDR",deal_url,api_key,current_page];
 	NSLog(@"url-->%@",url);
 	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:url]];
 	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
@@ -170,7 +172,6 @@
     if (cell == nil) {
         cell = [[tripifyCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-	NSLog(@"object_draw.price_formatted ->%@",object_draw.price_formatted );
 	if(object_draw.price_formatted==NULL){
 		cell.price.text=@"Enquire";
 	}
@@ -216,6 +217,14 @@
 	
     return cell;
 
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	details =[[tripDetails alloc]init];
+	dealsJSON  *object_draw=[deals_array objectAtIndex:indexPath.row];
+	details.url=object_draw.headline;
+	[self presentPopupViewController:details animationType:MJPopupViewAnimationSlideBottomBottom];
+
+	
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
