@@ -9,6 +9,20 @@
 #import <UIKit/UIKit.h>
 
 @interface tripDetails : UIViewController
+{
+	UIImageView *deals_image_bg;
+	UIImageView *deals_image;
+	UILabel *location_;
+	UILabel *price_;
+	UILabel *headline_;
+	UIView *divider;
+	
+	UIButton *twitter;
+	UIButton *facebook;
+	UIButton *checkout;
+	
+	
+}
 @property(nonatomic,strong) NSString *headline;
 @property(nonatomic,strong) NSString *provider;
 @property(nonatomic,strong) NSString *featured;
