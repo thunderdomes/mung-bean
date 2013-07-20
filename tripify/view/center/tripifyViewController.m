@@ -40,12 +40,22 @@
 -(void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:YES];
 	[self initNavbar];
+	current_page=1;
 	[self fetchData];
 	
 	
 }
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+	if  (scrollView.contentOffset.y == scrollView.contentSize.height - scrollView.frame.size.height) {
+		current_page++;
+		[self fetchData];
+		return;
+	}
+}
 -(void)fetchData{
-	NSString *url=[NSString stringWithFormat:@"%@&api_key=%@",deal_url,api_key];
+	NSString *url=[NSString stringWithFormat:@"%@&api_key=%@&page=%d&per_page=10",deal_url,api_key,current_page];
+	NSLog(@"url-->%@",url);
 	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:url]];
 	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
 	NSMutableURLRequest *request = [httpClient requestWithMethod:@"get"
@@ -53,6 +63,7 @@
 													  parameters:nil];
 	[AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
 	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id responseObject) {
+		total_deals=[[responseObject objectForKey:@"total"]intValue];
 		for(id deals_object in [responseObject objectForKey:@"deals"]){
 			dealsJSON *object=[[dealsJSON alloc] initWithDictionary:deals_object];
 			[deals_array addObject:object];
@@ -118,6 +129,19 @@
 
 
 }
+//////loading cell
+-(UITableViewCell *) loadingCell{
+	
+	UITableViewCell *cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+	UIActivityIndicatorView *activityIndicator=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+	activityIndicator.center=cell.center;
+	[cell addSubview:activityIndicator];
+	[activityIndicator startAnimating];
+	cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	[activityIndicator startAnimating];
+	return cell;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -127,29 +151,53 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return deals_array.count;
+	if(current_page<total_page){
+		
+		return [deals_array count]+1;
+	}
+	
+	return [deals_array count];
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(UITableViewCell *) empty{
+	UITableViewCell *cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+	return cell;
+}
+-(UITableViewCell *)DealsCellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	dealsJSON  *object_draw=[deals_array objectAtIndex:indexPath.row];
     static NSString *CellIdentifier = @"deals";
     
-    tripifyCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    tripifyCell *cell = [deals_table dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[tripifyCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-	cell.price.text=object_draw.price_formatted;
+	NSLog(@"object_draw.price_formatted ->%@",object_draw.price_formatted );
+	if(object_draw.price_formatted==NULL){
+		cell.price.text=@"Enquire";
+	}
+	else{
+		cell.price.text=object_draw.price_formatted;
+	}
 	cell.headline.text=object_draw.headline;
-	[cell.headline sizeToFit];
 	[cell.symlink setImage:[UIImage imageNamed:object_draw.deal_type]];
 	
 	
 	cell.location.text=object_draw.location;
+	if ([cell.location.text length] >25) {
+		cell.location.text = [cell.location.text substringToIndex:25];
+	}
+	if(object_draw.location==NULL){
+		cell.location.text=@"Featured";
+	}
+	else{
+		cell.location.text=object_draw.location;
+	}
 	[cell.location sizeToFit];
 	CGRect frame = cell.location.frame;
-	frame.size.width += 20; //l + r padding
+	frame.size.width += 10; //l + r padding
 	frame.size.height+=5;
 	cell.location.frame= frame;
+	
+	
 	[cell.thumbnail setImageWithURL:[NSURL URLWithString:object_draw.image_thumb] placeholderImage:[UIImage imageNamed:@"placeholder-avatar"]];
 	if([object_draw.deal_type isEqualToString:@"flights"]){
 		cell.top.backgroundColor=[UIColor colorWithRed:0.137 green:0.761 blue:0.918 alpha:1];//[UIColor colorWithRed:0.98 green:0.396 blue:0.639 alpha:1];
@@ -169,7 +217,18 @@
 	
 	
     return cell;
+
 }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if(indexPath.row<deals_array.count){
+		return [self DealsCellForRowAtIndexPath:indexPath];
+	}
+	else{
+		return [self loadingCell];
+	}
+
+	}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
