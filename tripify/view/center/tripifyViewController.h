@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "tripDetails.h"
 @interface tripifyViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
 	NSMutableArray *deals_array;
@@ -15,5 +15,6 @@
 	NSInteger current_page;
 	NSInteger total_page;
 	NSInteger total_deals;
+	tripDetails *details;
 }
 @end
