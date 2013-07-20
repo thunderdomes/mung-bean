@@ -60,6 +60,8 @@
 		[twitter setBackgroundImage:[UIImage imageNamed:@"twitter"] forState:UIControlStateNormal];
 		[twitter setBackgroundImage:[UIImage imageNamed:@"twitter"] forState:UIControlStateHighlighted];
 		
+		
+		
 		[self.view addSubview:deals_image_bg];
 		[self.view addSubview:divider];
 		[self.view addSubview:deals_image];
