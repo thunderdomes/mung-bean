@@ -35,20 +35,20 @@
 		self.price.textColor=[UIColor colorWithRed:0.267 green:0.267 blue:0.267 alpha:1];
 		self.price.font=[UIFont fontWithName:@"AvenirNext-Bold" size:18];
 		
-		self.headline=[[UILabel alloc]initWithFrame:CGRectMake(110,39, 200, 80)];
+		self.headline=[[UILabel alloc]initWithFrame:CGRectMake(110,33, 195, 44)];
 		self.headline.backgroundColor=[UIColor clearColor];
 		self.headline.textColor=[UIColor colorWithRed:0.537 green:0.537 blue:0.537 alpha:1];
 		self.headline.font=[UIFont fontWithName:@"HelveticaNeue-Bold" size:12];
 		[self.headline setNumberOfLines:2];
-		self.headline.lineBreakMode=NSLineBreakByTruncatingTail;
+		self.headline.lineBreakMode=NSLineBreakByCharWrapping;
 
-		self.location=[[UILabel alloc]initWithFrame:CGRectMake(110, 76.5, 200, 30)];
+		self.location=[[UILabel alloc]initWithFrame:CGRectMake(110, 76.5, 130, 25)];
 		self.location.backgroundColor=[UIColor redColor];
 		self.location.textColor=[UIColor whiteColor];
 		self.location.numberOfLines=1;
-		self.location.lineBreakMode=NSLineBreakByWordWrapping;
+		self.location.lineBreakMode=NSLineBreakByCharWrapping;
 		self.location.textAlignment=NSTextAlignmentCenter;
-		self.location.font=[UIFont fontWithName:@"AvenirNext-DemiBold" size:14];
+		self.location.font=[UIFont fontWithName:@"AvenirNext-DemiBold" size:13];
 		self.location.layer.cornerRadius = 3.5;
 		self.location.layer.masksToBounds = YES;
 		

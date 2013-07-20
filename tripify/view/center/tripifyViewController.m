@@ -131,6 +131,7 @@
 }
 //////loading cell
 -(UITableViewCell *) loadingCell{
+	
 	UITableViewCell *cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
 	UIActivityIndicatorView *activityIndicator=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 	activityIndicator.center=cell.center;
@@ -150,7 +151,12 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return deals_array.count;
+	if(current_page<total_page){
+		
+		return [deals_array count]+1;
+	}
+	
+	return [deals_array count];
 }
 -(UITableViewCell *) empty{
 	UITableViewCell *cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
@@ -172,16 +178,19 @@
 		cell.price.text=object_draw.price_formatted;
 	}
 	cell.headline.text=object_draw.headline;
-	[cell.headline sizeToFit];
 	[cell.symlink setImage:[UIImage imageNamed:object_draw.deal_type]];
 	
 	
 	cell.location.text=object_draw.location;
+	if ([cell.location.text length] >25) {
+		cell.location.text = [cell.location.text substringToIndex:25];
+	}
 	[cell.location sizeToFit];
 	CGRect frame = cell.location.frame;
 	frame.size.width += 10; //l + r padding
 	frame.size.height+=5;
 	cell.location.frame= frame;
+	
 	
 	[cell.thumbnail setImageWithURL:[NSURL URLWithString:object_draw.image_thumb] placeholderImage:[UIImage imageNamed:@"placeholder-avatar"]];
 	if([object_draw.deal_type isEqualToString:@"flights"]){
