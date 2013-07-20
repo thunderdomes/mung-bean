@@ -181,16 +181,14 @@
 	[cell.symlink setImage:[UIImage imageNamed:object_draw.deal_type]];
 	
 	
-	cell.location.text=object_draw.location;
-	if ([cell.location.text length] >25) {
-		cell.location.text = [cell.location.text substringToIndex:25];
-	}
+	
+	
 	if(object_draw.location==NULL){
 		cell.location.text=@"Featured";
 	}
 	else{
 		cell.location.text=object_draw.location;
-	}
+		}
 	[cell.location sizeToFit];
 	CGRect frame = cell.location.frame;
 	frame.size.width += 10; //l + r padding
@@ -200,16 +198,16 @@
 	
 	[cell.thumbnail setImageWithURL:[NSURL URLWithString:object_draw.image_thumb] placeholderImage:[UIImage imageNamed:@"placeholder-avatar"]];
 	if([object_draw.deal_type isEqualToString:@"flights"]){
-		cell.top.backgroundColor=[UIColor colorWithRed:0.137 green:0.761 blue:0.918 alpha:1];//[UIColor colorWithRed:0.98 green:0.396 blue:0.639 alpha:1];
-		cell.location.backgroundColor=[UIColor colorWithRed:0.137 green:0.761 blue:0.918 alpha:1];
+		cell.top.backgroundColor=[UIColor colorWithRed:0.98 green:0.376 blue:0.627 alpha:1] ;//[UIColor colorWithRed:0.98 green:0.396 blue:0.639 alpha:1];
+		cell.location.backgroundColor=[UIColor colorWithRed:0.98 green:0.376 blue:0.627 alpha:1] ;
 	}
 	else if([object_draw.deal_type isEqualToString:@"packages"]){
 		cell.top.backgroundColor=[UIColor colorWithRed:1 green:0.663 blue:0.353 alpha:1];
 		cell.location.backgroundColor=[UIColor colorWithRed:1 green:0.663 blue:0.353 alpha:1];
 	}
 	else if([object_draw.deal_type isEqualToString:@"hotels"]){
-		cell.top.backgroundColor=[UIColor colorWithRed:0.247 green:0.671 blue:0.208 alpha:1];
-		cell.location.backgroundColor=[UIColor colorWithRed:0.247 green:0.671 blue:0.208 alpha:1];
+		cell.top.backgroundColor=[UIColor colorWithRed:0.18 green:0.725 blue:0.486 alpha:1] ;
+		cell.location.backgroundColor=[UIColor colorWithRed:0.18 green:0.725 blue:0.486 alpha:1] ;
 	}
 	
 	cell.detailTextLabel.backgroundColor=[UIColor clearColor];

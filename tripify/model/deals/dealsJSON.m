@@ -24,6 +24,14 @@
 		self.image_original=[[dictionary objectForKey:@"image"]objectForKey:@"original"];
 		self.image_thumb=[[dictionary objectForKey:@"image"]objectForKey:@"thumbnail"];
 		self.location=[dictionary objectForKey:@"location"];
+		NSRange stringRange = {0, MIN([self.location length], 40)};
+		
+		// adjust the range to include dependent chars
+		stringRange = [self.location rangeOfComposedCharacterSequencesForRange:stringRange];
+		
+		// Now you can create the short string
+		NSString *shortString = [self.location substringWithRange:stringRange];
+		self.location=shortString;
 	}
 	return self;
 }
