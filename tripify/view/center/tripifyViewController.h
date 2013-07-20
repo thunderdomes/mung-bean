@@ -12,5 +12,8 @@
 {
 	NSMutableArray *deals_array;
 	UITableView *deals_table;
+	NSInteger current_page;
+	NSInteger total_page;
+	NSInteger total_deals;
 }
 @end
