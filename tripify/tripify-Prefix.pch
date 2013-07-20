@@ -16,4 +16,5 @@
 #import "AFNetworking.h"
 #import "tripify.h"
 #import "dealsJSON.h"
+#import <QuartzCore/QuartzCore.h>
 #endif

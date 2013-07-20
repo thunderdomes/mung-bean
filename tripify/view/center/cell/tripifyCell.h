@@ -14,4 +14,5 @@
 @property(nonatomic,strong) UILabel *headline;
 @property(nonatomic,strong) UIView *top;
 @property(nonatomic,strong) UILabel *provider;
+@property(nonatomic,strong) UIImageView *thumbnail;
 @end

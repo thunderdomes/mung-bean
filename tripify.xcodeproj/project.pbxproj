@@ -39,6 +39,7 @@
 		D07B2E181799F15D0042CE86 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D07B2E171799F15D0042CE86 /* .gitignore */; };
 		D07B2E1C1799F6A20042CE86 /* tripifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B2E1B1799F6A20042CE86 /* tripifyCell.m */; };
 		D07B2E1E1799FE7D0042CE86 /* container@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07B2E1D1799FE7D0042CE86 /* container@2x.png */; };
+		D07B2E20179A03410042CE86 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07B2E1F179A03410042CE86 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		D07B2E1A1799F6A20042CE86 /* tripifyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tripifyCell.h; sourceTree = "<group>"; };
 		D07B2E1B1799F6A20042CE86 /* tripifyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tripifyCell.m; sourceTree = "<group>"; };
 		D07B2E1D1799FE7D0042CE86 /* container@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "container@2x.png"; sourceTree = "<group>"; };
+		D07B2E1F179A03410042CE86 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07B2E20179A03410042CE86 /* QuartzCore.framework in Frameworks */,
 				D07B2E161799F11D0042CE86 /* SystemConfiguration.framework in Frameworks */,
 				D07B2E141799F10A0042CE86 /* MobileCoreServices.framework in Frameworks */,
 				D07B2DAD1799B88B0042CE86 /* UIKit.framework in Frameworks */,
@@ -134,6 +137,7 @@
 		D07B2DA01799B88B0042CE86 = {
 			isa = PBXGroup;
 			children = (
+				D07B2E1F179A03410042CE86 /* QuartzCore.framework */,
 				D07B2E171799F15D0042CE86 /* .gitignore */,
 				D07B2E151799F11D0042CE86 /* SystemConfiguration.framework */,
 				D07B2E131799F10A0042CE86 /* MobileCoreServices.framework */,

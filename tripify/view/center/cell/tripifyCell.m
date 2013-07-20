@@ -18,9 +18,14 @@
 		self.container=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 125)];
 		self.container.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"container"]];
 		
-		self.top=[[UIView alloc]initWithFrame:CGRectMake(9, 4, 301, 2)];
+		self.thumbnail=[[UIImageView alloc]initWithFrame:CGRectMake(15, 12, 90, 90)];
+		self.thumbnail.layer.cornerRadius = 5.0;
+		self.thumbnail.layer.masksToBounds = YES;
+		
+		self.top=[[UIView alloc]initWithFrame:CGRectMake(9, 4, 301, 3)];
 		self.top.backgroundColor=[UIColor blackColor];
 		[self.container addSubview:self.top];
+		[self.container addSubview:self.thumbnail];
 		[self.contentView addSubview:self.container];
     }
     return self;
