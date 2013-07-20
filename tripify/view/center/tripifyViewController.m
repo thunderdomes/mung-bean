@@ -185,6 +185,12 @@
 	if ([cell.location.text length] >25) {
 		cell.location.text = [cell.location.text substringToIndex:25];
 	}
+	if(object_draw.location==NULL){
+		cell.location.text=@"Featured";
+	}
+	else{
+		cell.location.text=object_draw.location;
+	}
 	[cell.location sizeToFit];
 	CGRect frame = cell.location.frame;
 	frame.size.width += 10; //l + r padding
