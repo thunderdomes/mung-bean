@@ -138,17 +138,30 @@
     if (cell == nil) {
         cell = [[tripifyCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-	cell.textLabel.text=object_draw.headline;
-	cell.detailTextLabel.text=object_draw.deal_type;
+	cell.price.text=object_draw.price_formatted;
+	cell.headline.text=object_draw.headline;
+	[cell.headline sizeToFit];
+	[cell.symlink setImage:[UIImage imageNamed:object_draw.deal_type]];
+	
+	
+	cell.location.text=object_draw.location;
+	[cell.location sizeToFit];
+	CGRect frame = cell.location.frame;
+	frame.size.width += 20; //l + r padding
+	frame.size.height+=5;
+	cell.location.frame= frame;
 	[cell.thumbnail setImageWithURL:[NSURL URLWithString:object_draw.image_thumb] placeholderImage:[UIImage imageNamed:@"placeholder-avatar"]];
 	if([object_draw.deal_type isEqualToString:@"flights"]){
 		cell.top.backgroundColor=[UIColor colorWithRed:0.137 green:0.761 blue:0.918 alpha:1];//[UIColor colorWithRed:0.98 green:0.396 blue:0.639 alpha:1];
+		cell.location.backgroundColor=[UIColor colorWithRed:0.137 green:0.761 blue:0.918 alpha:1];
 	}
 	else if([object_draw.deal_type isEqualToString:@"packages"]){
 		cell.top.backgroundColor=[UIColor colorWithRed:1 green:0.663 blue:0.353 alpha:1];
+		cell.location.backgroundColor=[UIColor colorWithRed:1 green:0.663 blue:0.353 alpha:1];
 	}
 	else if([object_draw.deal_type isEqualToString:@"hotels"]){
-		cell.top.backgroundColor=[UIColor colorWithRed:0.18 green:0.725 blue:0.486 alpha:1];
+		cell.top.backgroundColor=[UIColor colorWithRed:0.247 green:0.671 blue:0.208 alpha:1];
+		cell.location.backgroundColor=[UIColor colorWithRed:0.247 green:0.671 blue:0.208 alpha:1];
 	}
 	
 	cell.detailTextLabel.backgroundColor=[UIColor clearColor];
