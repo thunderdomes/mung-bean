@@ -172,18 +172,18 @@
     if (cell == nil) {
         cell = [[tripifyCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
+		cell.headline.text=object_draw.headline;
+	[cell.symlink setImage:[UIImage imageNamed:object_draw.deal_type]];
+	
+	
+	
 	if(object_draw.price_formatted==NULL){
 		cell.price.text=@"Enquire";
 	}
 	else{
 		cell.price.text=object_draw.price_formatted;
 	}
-	cell.headline.text=object_draw.headline;
-	[cell.symlink setImage:[UIImage imageNamed:object_draw.deal_type]];
-	
-	
-	
-	
+
 	if(object_draw.location==NULL){
 		cell.location.text=@"Featured";
 	}
@@ -221,7 +221,11 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	details =[[tripDetails alloc]init];
 	dealsJSON  *object_draw=[deals_array objectAtIndex:indexPath.row];
-	details.url=object_draw.headline;
+	details.image_original=object_draw.image_original;
+	details.price_amount=object_draw.price_formatted;
+	details.location=object_draw.location;
+	details.headline=object_draw.headline;
+	details.deal_type=object_draw.deal_type;
 	[self presentPopupViewController:details animationType:MJPopupViewAnimationSlideBottomBottom];
 
 	
