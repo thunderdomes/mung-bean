@@ -35,7 +35,7 @@
 		self.price.textColor=[UIColor colorWithRed:0.267 green:0.267 blue:0.267 alpha:1];
 		self.price.font=[UIFont fontWithName:@"AvenirNext-Bold" size:18];
 		
-		self.headline=[[UILabel alloc]initWithFrame:CGRectMake(110,37, 200, 80)];
+		self.headline=[[UILabel alloc]initWithFrame:CGRectMake(110,39, 200, 80)];
 		self.headline.backgroundColor=[UIColor clearColor];
 		self.headline.textColor=[UIColor colorWithRed:0.537 green:0.537 blue:0.537 alpha:1];
 		self.headline.font=[UIFont fontWithName:@"HelveticaNeue-Bold" size:12];
