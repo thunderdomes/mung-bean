@@ -19,14 +19,49 @@
 		self.container.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"container"]];
 		
 		self.thumbnail=[[UIImageView alloc]initWithFrame:CGRectMake(15, 12, 90, 90)];
-		self.thumbnail.layer.cornerRadius = 5.0;
+		self.thumbnail.layer.cornerRadius = 6.5;
 		self.thumbnail.layer.masksToBounds = YES;
+		
+		self.shadow=[[UIView alloc]initWithFrame:CGRectMake(15, 12, 90, 90)];
+		self.shadow.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"shadow"]];
 		
 		self.top=[[UIView alloc]initWithFrame:CGRectMake(9, 4, 301, 3)];
 		self.top.backgroundColor=[UIColor blackColor];
+		self.symlink=[[UIImageView alloc]initWithFrame:CGRectMake(15, 61.5,40.5,40.5)];
+		self.symlink.backgroundColor=[UIColor clearColor];
+		
+		self.price=[[UILabel alloc]initWithFrame:CGRectMake(110, 15, 200, 20)];
+		self.price.backgroundColor=[UIColor clearColor];
+		self.price.textColor=[UIColor colorWithRed:0.267 green:0.267 blue:0.267 alpha:1];
+		self.price.font=[UIFont fontWithName:@"AvenirNext-Bold" size:18];
+		
+		self.headline=[[UILabel alloc]initWithFrame:CGRectMake(110,37, 200, 80)];
+		self.headline.backgroundColor=[UIColor clearColor];
+		self.headline.textColor=[UIColor colorWithRed:0.537 green:0.537 blue:0.537 alpha:1];
+		self.headline.font=[UIFont fontWithName:@"HelveticaNeue-Bold" size:12];
+		[self.headline setNumberOfLines:2];
+		self.headline.lineBreakMode=NSLineBreakByTruncatingTail;
+
+		self.location=[[UILabel alloc]initWithFrame:CGRectMake(110, 76.5, 200, 30)];
+		self.location.backgroundColor=[UIColor redColor];
+		self.location.textColor=[UIColor whiteColor];
+		self.location.numberOfLines=1;
+		self.location.lineBreakMode=NSLineBreakByWordWrapping;
+		self.location.textAlignment=NSTextAlignmentCenter;
+		self.location.font=[UIFont fontWithName:@"AvenirNext-DemiBold" size:14];
+		self.location.layer.cornerRadius = 3.5;
+		self.location.layer.masksToBounds = YES;
+		
 		[self.container addSubview:self.top];
 		[self.container addSubview:self.thumbnail];
+		[self.container addSubview:self.shadow];
+		[self.container addSubview:self.price];
+		[self.container addSubview:self.headline];
+		[self.container addSubview:self.symlink];
+		[self.container addSubview:self.location];
+		
 		[self.contentView addSubview:self.container];
+
     }
     return self;
 }

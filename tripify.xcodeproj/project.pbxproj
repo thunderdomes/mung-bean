@@ -40,6 +40,10 @@
 		D07B2E1C1799F6A20042CE86 /* tripifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B2E1B1799F6A20042CE86 /* tripifyCell.m */; };
 		D07B2E1E1799FE7D0042CE86 /* container@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07B2E1D1799FE7D0042CE86 /* container@2x.png */; };
 		D07B2E20179A03410042CE86 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07B2E1F179A03410042CE86 /* QuartzCore.framework */; };
+		D07B2E22179A0E220042CE86 /* shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07B2E21179A0E220042CE86 /* shadow@2x.png */; };
+		D07B2E24179A1D480042CE86 /* flights@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07B2E23179A1D480042CE86 /* flights@2x.png */; };
+		D07B2E26179A1E9D0042CE86 /* hotels@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07B2E25179A1E9D0042CE86 /* hotels@2x.png */; };
+		D07B2E2A179A1F6C0042CE86 /* packages@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07B2E29179A1F6C0042CE86 /* packages@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +109,10 @@
 		D07B2E1B1799F6A20042CE86 /* tripifyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tripifyCell.m; sourceTree = "<group>"; };
 		D07B2E1D1799FE7D0042CE86 /* container@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "container@2x.png"; sourceTree = "<group>"; };
 		D07B2E1F179A03410042CE86 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D07B2E21179A0E220042CE86 /* shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shadow@2x.png"; sourceTree = "<group>"; };
+		D07B2E23179A1D480042CE86 /* flights@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flights@2x.png"; sourceTree = "<group>"; };
+		D07B2E25179A1E9D0042CE86 /* hotels@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hotels@2x.png"; sourceTree = "<group>"; };
+		D07B2E29179A1F6C0042CE86 /* packages@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "packages@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +244,10 @@
 		D07B2DE31799B8CF0042CE86 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				D07B2E23179A1D480042CE86 /* flights@2x.png */,
+				D07B2E21179A0E220042CE86 /* shadow@2x.png */,
+				D07B2E25179A1E9D0042CE86 /* hotels@2x.png */,
+				D07B2E29179A1F6C0042CE86 /* packages@2x.png */,
 				D07B2E1D1799FE7D0042CE86 /* container@2x.png */,
 				D07B2DEA1799BC520042CE86 /* navbar@2x.png */,
 			);
@@ -391,6 +403,10 @@
 				D07B2DEB1799BC520042CE86 /* navbar@2x.png in Resources */,
 				D07B2E181799F15D0042CE86 /* .gitignore in Resources */,
 				D07B2E1E1799FE7D0042CE86 /* container@2x.png in Resources */,
+				D07B2E22179A0E220042CE86 /* shadow@2x.png in Resources */,
+				D07B2E24179A1D480042CE86 /* flights@2x.png in Resources */,
+				D07B2E26179A1E9D0042CE86 /* hotels@2x.png in Resources */,
+				D07B2E2A179A1F6C0042CE86 /* packages@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
