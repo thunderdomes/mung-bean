@@ -19,7 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 		self.view.backgroundColor=[UIColor whiteColor];
-		self.view.frame=CGRectMake(0, 0, 270, 270);
+		self.view.frame=CGRectMake(0, 0, 270, 320);
 		deals_image_bg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 270, 160)];
 		divider=[[UIView alloc]initWithFrame:CGRectMake(0, 160, 270, 3)];
 		deals_image=[[UIImageView alloc]initWithFrame:CGRectMake(95, 20,80, 80)];
@@ -41,19 +41,22 @@
 		price_.backgroundColor=[UIColor clearColor];
 		price_.font=[UIFont fontWithName:@"AvenirNext-Bold" size:20];
 		
-		headline_=[[UILabel alloc]initWithFrame:CGRectMake(10, 170, 250, 50)];
+		headline_=[[UILabel alloc]initWithFrame:CGRectMake(45, 180, 180, 100)];
 		headline_.backgroundColor=[UIColor clearColor];
 		headline_.textColor=[UIColor colorWithRed:0.537 green:0.537 blue:0.537 alpha:1];
 		headline_.font=[UIFont fontWithName:@"HelveticaNeue-Bold" size:12];
 		[headline_ setNumberOfLines:4];
+		headline_.textAlignment=NSTextAlignmentCenter;
 		headline_.lineBreakMode=NSLineBreakByCharWrapping;
 		
 		facebook=[UIButton buttonWithType:UIButtonTypeCustom];
-		facebook.frame=CGRectMake(10, 225, 34, 34);
+		facebook.frame=CGRectMake(13, 245, 244, 43);
 		//facebook.backgroundColor=[UIColor blackColor];
-		[facebook setBackgroundImage:[UIImage imageNamed:@"facebook"] forState:UIControlStateNormal];
-		[facebook setBackgroundImage:[UIImage imageNamed:@"facebook"] forState:UIControlStateHighlighted];
-		
+		[facebook setBackgroundImage:[UIImage imageNamed:@"show"] forState:UIControlStateNormal];
+		[facebook setBackgroundImage:[UIImage imageNamed:@"showh"] forState:UIControlStateHighlighted];
+		[facebook addTarget:self
+					   action:@selector(jump)
+			 forControlEvents: UIControlEventTouchUpInside];
 		twitter=[UIButton buttonWithType:UIButtonTypeCustom];
 		twitter.frame=CGRectMake(60, 225, 34, 34);
 		//facebook.backgroundColor=[UIColor blackColor];
@@ -67,7 +70,6 @@
 		[self.view addSubview:price_];
 		[self.view addSubview:headline_];
 		
-		[self.view addSubview:twitter];
 		[self.view addSubview:facebook];
 
         // Custom initialization
@@ -82,7 +84,7 @@
 	// Do any additional setup after loading the view.
 }
 -(void)viewDidLayoutSubviews{
-	NSLog(@"self url-->%@",self.deal_type);
+	NSLog(@"self url-->%@",self.url);
 	[deals_image_bg setImage:[UIImage imageNamed:[NSString stringWithFormat:@"bg_%@",self.deal_type]]];
 	
 	if([self.deal_type isEqualToString:@"hotels"]){
@@ -123,5 +125,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)jump{
+	//NSURL *url = [NSURL URLWithString:@"http://www.iphonedevelopertips.com"];
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.url]];
+}
 @end

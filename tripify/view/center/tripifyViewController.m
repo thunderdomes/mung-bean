@@ -120,7 +120,7 @@
 	top_label.backgroundColor=[UIColor clearColor];
 	
 	UILabel *TitleBig=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 230, 44)];
-	TitleBig.text=@"tripify";
+	TitleBig.text=@"Tripify";
 	TitleBig.textAlignment=NSTextAlignmentCenter;
 	TitleBig.backgroundColor=[UIColor clearColor];
 	[TitleBig setFont:[UIFont fontWithName:@"AvenirNext-Regular" size:22]];
@@ -219,6 +219,7 @@
 
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	
 	details =[[tripDetails alloc]init];
 	dealsJSON  *object_draw=[deals_array objectAtIndex:indexPath.row];
 	details.image_original=object_draw.image_original;
@@ -226,10 +227,12 @@
 	details.location=object_draw.location;
 	details.headline=object_draw.headline;
 	details.deal_type=object_draw.deal_type;
+	details.url=object_draw.url;
 	[self presentPopupViewController:details animationType:MJPopupViewAnimationSlideBottomBottom];
 
 	
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if(indexPath.row<deals_array.count){
