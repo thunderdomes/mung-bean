@@ -17,6 +17,5 @@
 #import "tripify.h"
 #import "dealsJSON.h"
 #import <QuartzCore/QuartzCore.h>
-#import "UIViewController+MJPopupViewController.h"
-#import "MJPopupBackgroundView.h"
+#import "ASDepthModalViewController.h"
 #endif

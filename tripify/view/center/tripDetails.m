@@ -7,7 +7,7 @@
 //
 
 #import "tripDetails.h"
-
+#import "SVWebViewController.h"
 @interface tripDetails ()
 
 @end
@@ -44,7 +44,7 @@
 		headline_=[[UILabel alloc]initWithFrame:CGRectMake(45, 180, 180, 100)];
 		headline_.backgroundColor=[UIColor clearColor];
 		headline_.textColor=[UIColor colorWithRed:0.537 green:0.537 blue:0.537 alpha:1];
-		headline_.font=[UIFont fontWithName:@"HelveticaNeue-Bold" size:12];
+		headline_.font=[UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
 		[headline_ setNumberOfLines:4];
 		headline_.textAlignment=NSTextAlignmentCenter;
 		headline_.lineBreakMode=NSLineBreakByCharWrapping;
@@ -84,7 +84,6 @@
 	// Do any additional setup after loading the view.
 }
 -(void)viewDidLayoutSubviews{
-	NSLog(@"self url-->%@",self.url);
 	[deals_image_bg setImage:[UIImage imageNamed:[NSString stringWithFormat:@"bg_%@",self.deal_type]]];
 	
 	if([self.deal_type isEqualToString:@"hotels"]){
@@ -126,7 +125,9 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)jump{
-	//NSURL *url = [NSURL URLWithString:@"http://www.iphonedevelopertips.com"];
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.url]];
+	SVWebViewController *webViewController = [[SVWebViewController alloc] initWithURL:[NSURL URLWithString:self.url]];
+	[self.navigationController pushViewController:webViewController animated:YES];
+	
+	
 }
 @end

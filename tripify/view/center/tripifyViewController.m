@@ -8,7 +8,7 @@
 
 #import "tripifyViewController.h"
 #import "tripifyCell.h"
-
+#import "SVWebViewController.h"
 @interface tripifyViewController ()
 
 @end
@@ -20,13 +20,68 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-		self.view.backgroundColor=[UIColor colorWithRed:0.953 green:0.953 blue:0.953 alpha:1];
+
+		self.view.backgroundColor=[UIColor blackColor];
 		deals_array=[[NSMutableArray alloc]init];
 		deals_table=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,  self.view.frame.size.height-44)];
 		deals_table.delegate=self;
 		deals_table.dataSource=self;
 		deals_table.separatorColor=[UIColor clearColor];
 		
+		popupView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 270, 350)];
+		popupView.backgroundColor=[UIColor whiteColor];
+		
+		deals_image_bg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 270, 160)];
+		divider=[[UIView alloc]initWithFrame:CGRectMake(0, 160, 270, 3)];
+		deals_image=[[UIImageView alloc]initWithFrame:CGRectMake(95, 20,80, 80)];
+		deals_image.layer.cornerRadius = 6.5;
+		
+		deals_image.layer.masksToBounds = YES;
+		[deals_image.layer setBorderColor: [[UIColor whiteColor] CGColor]];
+		[deals_image.layer setBorderWidth: 2.0];
+		
+		location_=[[UILabel alloc]initWithFrame:CGRectMake(0, 95, 270, 44)];
+		location_.textColor=[UIColor whiteColor];
+		location_.textAlignment=NSTextAlignmentCenter;
+		location_.backgroundColor=[UIColor clearColor];
+		location_.font=[UIFont fontWithName:@"AvenirNext-Bold" size:14];
+		
+		price_=[[UILabel alloc]initWithFrame:CGRectMake(0, 115, 270, 44)];
+		price_.textColor=[UIColor whiteColor];
+		price_.textAlignment=NSTextAlignmentCenter;
+		price_.backgroundColor=[UIColor clearColor];
+		price_.font=[UIFont fontWithName:@"AvenirNext-Bold" size:20];
+		
+		headline_=[[UILabel alloc]initWithFrame:CGRectMake(40, 180, 190, 100)];
+		headline_.backgroundColor=[UIColor clearColor];
+		headline_.textColor=[UIColor colorWithRed:0.537 green:0.537 blue:0.537 alpha:1];
+		headline_.font=[UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
+		[headline_ setNumberOfLines:4];
+		headline_.textAlignment=NSTextAlignmentCenter;
+		headline_.lineBreakMode=NSLineBreakByCharWrapping;
+		
+		facebook=[UIButton buttonWithType:UIButtonTypeCustom];
+		facebook.frame=CGRectMake(13, 245, 244, 43);
+		//facebook.backgroundColor=[UIColor blackColor];
+		[facebook setBackgroundImage:[UIImage imageNamed:@"show"] forState:UIControlStateNormal];
+		[facebook setBackgroundImage:[UIImage imageNamed:@"showh"] forState:UIControlStateHighlighted];
+		[facebook addTarget:self
+					 action:@selector(jump)
+		   forControlEvents: UIControlEventTouchUpInside];
+		twitter=[UIButton buttonWithType:UIButtonTypeCustom];
+		twitter.frame=CGRectMake(60, 225, 34, 34);
+		//facebook.backgroundColor=[UIColor blackColor];
+		[twitter setBackgroundImage:[UIImage imageNamed:@"twitter"] forState:UIControlStateNormal];
+		[twitter setBackgroundImage:[UIImage imageNamed:@"twitter"] forState:UIControlStateHighlighted];
+		
+		[popupView addSubview:deals_image_bg];
+		[popupView addSubview:divider];
+		[popupView addSubview:deals_image];
+		[popupView addSubview:location_];
+		[popupView addSubview:price_];
+		[popupView addSubview:headline_];
+		
+		[popupView addSubview:facebook];
 
 		[self.view addSubview:deals_table];
 		
@@ -41,7 +96,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:YES];
-	[self initNavbar];
+	[self initNavbar:@"0"];
 	current_page=1;
 	[self fetchData];
 	
@@ -80,8 +135,8 @@
     [operation start];
 	
 }
--(void)initNavbar{
-	[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar"] forBarMetrics:UIBarMetricsDefault];
+-(void)initNavbar:(NSString *)status{
+	[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar2"] forBarMetrics:UIBarMetricsDefault];
 	UIImage* image = [UIImage imageNamed:@"left"];
 	CGRect frame = CGRectMake(-5, 0, 44, 44);
 	UIButton* leftbutton = [[UIButton alloc] initWithFrame:frame];
@@ -118,15 +173,8 @@
 	
 	UIView *top_label=[[UIView alloc]initWithFrame:CGRectMake(45, 0, 230, 44)];
 	top_label.backgroundColor=[UIColor clearColor];
-	
-	UILabel *TitleBig=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 230, 44)];
-	TitleBig.text=@"Tripify";
-	TitleBig.textAlignment=NSTextAlignmentCenter;
-	TitleBig.backgroundColor=[UIColor clearColor];
-	[TitleBig setFont:[UIFont fontWithName:@"AvenirNext-Regular" size:22]];
-	TitleBig.textColor = [UIColor whiteColor];
-	TitleBig.hidden=NO;
-	[top_label addSubview:TitleBig];
+
+
 	[self.navigationController.navigationBar addSubview:top_label];
 
 
@@ -219,7 +267,8 @@
 
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-	
+	dealsJSON  *object_draw=[deals_array objectAtIndex:indexPath.row];
+	/*
 	details =[[tripDetails alloc]init];
 	dealsJSON  *object_draw=[deals_array objectAtIndex:indexPath.row];
 	details.image_original=object_draw.image_original;
@@ -229,6 +278,44 @@
 	details.deal_type=object_draw.deal_type;
 	details.url=object_draw.url;
 	[self presentPopupViewController:details animationType:MJPopupViewAnimationSlideBottomBottom];
+	 */
+	UIColor *color = [UIColor whiteColor];
+	[deals_image_bg setImage:[UIImage imageNamed:[NSString stringWithFormat:@"bg_%@",object_draw.deal_type]]];
+	
+	if([object_draw.deal_type isEqualToString:@"hotels"]){
+		divider.backgroundColor=[UIColor colorWithRed:0.18 green:0.725 blue:0.486 alpha:1];
+	}
+	else if([object_draw.deal_type isEqualToString:@"packages"]){
+		divider.backgroundColor=[UIColor colorWithRed:1 green:0.663 blue:0.353 alpha:1];
+	}
+	else{
+		divider.backgroundColor=[UIColor colorWithRed:0.98 green:0.376 blue:0.627 alpha:1];
+	}
+	
+	if(object_draw.price_formatted==NULL){
+		price_.text=@"Enquire";
+	}
+	else{
+		[price_ setText:object_draw.price_formatted];
+	}
+	
+	if(object_draw.location==NULL){
+		location_.text=@"Featured";
+	}
+	else{
+		[location_ setText:object_draw.location];
+	}
+	headline_.text = object_draw.headline;
+	[headline_ sizeToFit];
+	[deals_image setImageWithURL:[NSURL URLWithString:object_draw.image_original] placeholderImage:nil];
+    [ASDepthModalViewController presentView:popupView
+                            backgroundColor:color
+                                    options:ASDepthModalOptionAnimationGrow | ASDepthModalOptionTapOutsideToClose
+                          completionHandler:^{
+                              NSLog(@"Modal view closed.");
+							  url_dealss=@"";
+                          }];
+	url_dealss=object_draw.url;
 
 	
 }
@@ -248,5 +335,17 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void) viewWillDisappear:(BOOL)animated{
+	[super viewWillDisappear:YES];
+	[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar"] forBarMetrics:UIBarMetricsDefault];
+}
+-(void)jump{
+	[ASDepthModalViewController dismiss];
+	[self initNavbar:@"1"];
+	SVWebViewController *webViewController = [[SVWebViewController alloc] initWithURL:[NSURL URLWithString:url_dealss]];
+	[self.navigationController pushViewController:webViewController animated:YES];
+	[TitleBig setHidden:YES];
+	
+	
+}
 @end
