@@ -9,14 +9,15 @@
 #import "tripifyAppDelegate.h"
 @implementation tripifyAppDelegate
 @synthesize tripimain=_tripimain;
+@synthesize tripSearch=_tripSearch;
 @synthesize mains=_mains;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-	_tripimain=[[tripifyViewController alloc]init];
+	_tripSearch=[[searchViewController alloc]init];
 	[[UINavigationBar appearance]setShadowImage:[[UIImage alloc] init]];
-	_mains=[[UINavigationController alloc]initWithRootViewController:_tripimain];
+	_mains=[[UINavigationController alloc]initWithRootViewController:_tripSearch];
     self.window.rootViewController=_mains;
     [self.window makeKeyAndVisible];
     return YES;
