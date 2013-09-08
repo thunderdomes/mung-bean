@@ -7,7 +7,7 @@
 //
 
 #import "searchViewController.h"
-
+#import "tripifyLocation.h"
 @interface searchViewController ()
 
 @end
@@ -82,5 +82,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)lefbuttonPush{
+	
+	tripifyLocation *location=[[tripifyLocation alloc]init];
+	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:location];
+	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
+}
 @end

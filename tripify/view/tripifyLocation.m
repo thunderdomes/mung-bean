@@ -14,7 +14,7 @@
 
 @implementation tripifyLocation
 
-NSString *url_settings=@"http://deals.wego.com/api/filters.js?market=localize";
+NSString *url_settings=@"http://deals.wego.com/api/filters.js?market=localize&api_key=c055c1b373c6d9d84c0c";
 
 - (void)viewDidLoad
 {
@@ -23,7 +23,7 @@ NSString *url_settings=@"http://deals.wego.com/api/filters.js?market=localize";
 	self.view.backgroundColor=[UIColor whiteColor];
 	navBar= self.navigationController.navigationBar;
 	
-	UIImage *imagebar = [UIImage imageNamed:@"navbar"];
+	UIImage *imagebar = [UIImage imageNamed:@"navbar2-kanan2"];
 	[navBar setBackgroundImage:imagebar forBarMetrics:UIBarMetricsDefault];
 	titleView=[[UIView alloc]init];
 	titleLabel=[[UILabel alloc]init];
@@ -47,12 +47,12 @@ NSString *url_settings=@"http://deals.wego.com/api/filters.js?market=localize";
 	titleLabel.text=@"Choose Location";
 	titleLabel.textColor=[UIColor whiteColor];
 	titleLabel.textAlignment=NSTextAlignmentCenter;
-	[titleLabel setFont:[UIFont fontWithName:@"Cabin-Bold" size:23]];
+	[titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:18]];
 	[titleView addSubview:titleLabel];
 	titleView.frame=CGRectMake(50, 2, 210, 40);
 	[navBar addSubview:titleView];
-	self.tableView.separatorColor=[UIColor clearColor];
-	self.tableView.backgroundColor=[UIColor colorWithRed:0.98 green:0.984 blue:0.984 alpha:1];
+	self.tableView.separatorColor= [UIColor colorWithRed:0.937 green:0.937 blue:0.937 alpha:1];
+	self.tableView.backgroundColor=[UIColor whiteColor];
 	
 	// Create a custom button with the image
     buttonClose=  [UIButton buttonWithType:UIButtonTypeCustom];
@@ -110,7 +110,6 @@ NSString *url_settings=@"http://deals.wego.com/api/filters.js?market=localize";
 		if(Keypath==NULL){
 			NSString *Market=[[NSString alloc]init];
 			Market=[responseObject objectForKey:@"market_name"];
-			NSLog(@"Market---->%@",Market);
 			[self.tableView reloadData];
 		}
 		else{
@@ -191,35 +190,35 @@ NSString *url_settings=@"http://deals.wego.com/api/filters.js?market=localize";
  */
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 	UIView* citySection = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,26)];
-	citySection.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"Separator-regions"]];
+	citySection.backgroundColor=[UIColor blackColor];
 	UILabel *labelforCity=[[UILabel alloc]init];
 	labelforCity.backgroundColor=[UIColor clearColor];
 	labelforCity.textColor=[UIColor whiteColor];
 	labelforCity.text=@"Cities";
-	labelforCity.frame=CGRectMake(5, 0, 100, 26);
-	[labelforCity setFont:[UIFont fontWithName:@"Cabin-Bold" size:13 ] ];
+	labelforCity.frame=CGRectMake(5, -2, 100, 26);
+	[labelforCity setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:12 ] ];
 	[citySection addSubview:labelforCity];
 	
 	UIView* contrySection = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,26)];
-	contrySection.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"Separator-countries"]];
+	contrySection.backgroundColor=[UIColor blackColor];
 	
 	UILabel *labelforCountry=[[UILabel alloc]init];
 	labelforCountry.text=@"Contries";
 	labelforCountry.backgroundColor=[UIColor clearColor];
 	labelforCountry.textColor=[UIColor whiteColor];
-	labelforCountry.frame=CGRectMake(5, 0, 100, 26);
-	[labelforCountry setFont:[UIFont fontWithName:@"Cabin-Bold" size:13 ] ];
+	labelforCountry.frame=CGRectMake(5, -2, 100, 26);
+	[labelforCountry setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:12 ] ];
 	[contrySection addSubview:labelforCountry];
 	
 	UIView* worldSection = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,26)];
-	worldSection.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"Separator-countries"]];
+	worldSection.backgroundColor=[UIColor blackColor];
 	
 	UILabel *labelforWR=[[UILabel alloc]init];
 	labelforWR.text=@"World Region";
 	labelforWR.backgroundColor=[UIColor clearColor];
 	labelforWR.textColor=[UIColor whiteColor];
-	labelforWR.frame=CGRectMake(5, 0, 100, 26);
-	[labelforWR setFont:[UIFont fontWithName:@"Cabin-Bold" size:13 ] ];
+	labelforWR.frame=CGRectMake(5, -2, 100, 26);
+	[labelforWR setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:12 ] ];
 	[worldSection addSubview:labelforWR];
 	
 	
@@ -258,7 +257,7 @@ NSString *url_settings=@"http://deals.wego.com/api/filters.js?market=localize";
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-	[cell.textLabel setFont:[UIFont fontWithName:@"Cabin-Bold" size:18 ] ];
+	[cell.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:15 ] ];
 	cell.textLabel.textColor=[UIColor colorWithRed:0.353 green:0.369 blue:0.376 alpha:1];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -51,6 +51,7 @@
 		D07B2E3F179AC8F70042CE86 /* facebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07B2E3E179AC8F70042CE86 /* facebook@2x.png */; };
 		D0C469C717DC709500D71837 /* searchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C469C617DC709500D71837 /* searchViewController.m */; };
 		D0C469CA17DC739E00D71837 /* tripifyLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C469C917DC739E00D71837 /* tripifyLocation.m */; };
+		D0C469CC17DC76B800D71837 /* navbar2-kanan2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C469CB17DC76B800D71837 /* navbar2-kanan2@2x.png */; };
 		D0FE1F5B17DA5EA500880CF8 /* tripDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FE1F5A17DA5EA500880CF8 /* tripDetails.m */; };
 		D0FE1F5C17DA5EDD00880CF8 /* tripDetails.h in Sources */ = {isa = PBXBuildFile; fileRef = D0FE1F5917DA5EA500880CF8 /* tripDetails.h */; };
 		D0FE1F5D17DA5EDE00880CF8 /* tripDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FE1F5A17DA5EA500880CF8 /* tripDetails.m */; };
@@ -143,6 +144,7 @@
 		D0C469C617DC709500D71837 /* searchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchViewController.m; sourceTree = "<group>"; };
 		D0C469C817DC739E00D71837 /* tripifyLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tripifyLocation.h; path = ../tripifyLocation.h; sourceTree = "<group>"; };
 		D0C469C917DC739E00D71837 /* tripifyLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = tripifyLocation.m; path = ../tripifyLocation.m; sourceTree = "<group>"; };
+		D0C469CB17DC76B800D71837 /* navbar2-kanan2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar2-kanan2@2x.png"; sourceTree = "<group>"; };
 		D0FE1F5917DA5EA500880CF8 /* tripDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tripDetails.h; sourceTree = "<group>"; };
 		D0FE1F5A17DA5EA500880CF8 /* tripDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tripDetails.m; sourceTree = "<group>"; };
 		D0FE1F5E17DA613E00880CF8 /* showh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "showh@2x.png"; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				D07B2E3A179ABDFC0042CE86 /* bg_packages@2x.png */,
 				D07B2E23179A1D480042CE86 /* flights@2x.png */,
 				D07B2E21179A0E220042CE86 /* shadow@2x.png */,
+				D0C469CB17DC76B800D71837 /* navbar2-kanan2@2x.png */,
 				D07B2E25179A1E9D0042CE86 /* hotels@2x.png */,
 				D07B2E29179A1F6C0042CE86 /* packages@2x.png */,
 				D07B2E1D1799FE7D0042CE86 /* container@2x.png */,
@@ -528,6 +531,7 @@
 				D0FE1F7017DAC8A700880CF8 /* SVWebViewController.strings in Resources */,
 				D0FE1F7217DAC8A700880CF8 /* SVWebViewController.bundle in Resources */,
 				D0FE1F8217DAE11D00880CF8 /* navbar2@2x.png in Resources */,
+				D0C469CC17DC76B800D71837 /* navbar2-kanan2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
